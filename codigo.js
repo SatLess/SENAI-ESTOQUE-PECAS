@@ -7,20 +7,20 @@ let encerrar = "n"
 
 terminarProcesso()
 
-function terminarProcesso(){if (encerrar.toLowerCase() === "n"){
+function terminarProcesso(){while (encerrar.toLowerCase() === "n"){
 
     let tipoOperacao = getType(false)
     qtd = getType(true)
     MoveOrRemove(tipoOperacao)
 }
-
-else if(encerrar.toLowerCase() === "y"){
-    document.write("Sistema encerrado :)" + "<br>")
-}}
+    if(encerrar.toLowerCase() === "y"){
+        document.write("Sistema encerrado :)" + "<br>")
+        
+    }
+}
 
 function promptSaldo(){document.write("Saldo atual e "+ saldo + "<br>" )
 encerrar = prompt("Deseja encerrar? Y/N")
-terminarProcesso()
 }
 
 function getType(isQtd){
@@ -31,7 +31,9 @@ function getType(isQtd){
 
 function MoveOrRemove(tipo){
     if(tipo === 1){saldo += qtd}
-    else if(tipo === 2){ saldo < qtd ?alert(document.write("Saldo Insuficiente" + "<br>")): saldo -= qtd }
+    else if(tipo === 2){ if(saldo < qtd) {(document.write("Saldo Insuficiente" + "<br>"))
+    alert("Saldo Insuficiente")
+} else{ saldo -= qtd }}
     promptSaldo()
 }
 
