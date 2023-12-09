@@ -1,40 +1,45 @@
 
 let saldo = parseInt(prompt("Indique o saldo de pecas"))
 let qtd = 0
-document.write("Saldo igual a "+ saldo + "<br>") //Change To Doc.Write
-
+document.write("Saldo: "+ saldo + "<br>")
 let encerrar = "n"
 
-terminarProcesso()
+Processo()
 
-function terminarProcesso(){while (encerrar.toLowerCase() === "n"){
+function Processo(){while (encerrar.toLowerCase() === "n"){
 
     let tipoOperacao = getType(false)
     qtd = getType(true)
-    MoveOrRemove(tipoOperacao)
+    OperarTipo(tipoOperacao)
+    promptSaldo()
 }
-    if(encerrar.toLowerCase() === "y"){
-        document.write("Sistema encerrado :)" + "<br>")
-        
-    }
-}
-
-function promptSaldo(){document.write("Saldo atual e "+ saldo + "<br>" )
-encerrar = prompt("Deseja encerrar? Y/N")
+    //encerrar = y
+    document.write("Sistema encerrado :)" + "<br>")
 }
 
+//Decide se variável é qtd de peças ou tipo de operação
 function getType(isQtd){
     if (isQtd){return parseInt(prompt("Indique Qtd Peças"))}
     else{return parseInt(prompt("Indique Tipo de operação \n 1: Entrada de peças \n 2: Saída de peças"))}
 
 }
 
-function MoveOrRemove(tipo){
-    if(tipo === 1){saldo += qtd}
-    else if(tipo === 2){ if(saldo < qtd) {(document.write("Saldo Insuficiente" + "<br>"))
-    alert("Saldo Insuficiente")
-} else{ saldo -= qtd }}
-    promptSaldo()
+//Opera com base em tipo 1 ou 2
+function OperarTipo(tipo){
+    if(tipo === 1) {saldo += qtd}
+
+    else if(tipo === 2)
+    { if(saldo < qtd) {(document.write("Saldo Insuficiente" + "<br>"))
+    alert("Saldo Insuficiente")} 
+    else{ saldo -= qtd }}
 }
+
+function promptSaldo(){document.write("Saldo: "+ saldo + "<br>" )
+encerrar = prompt("Deseja encerrar? Y/N")
+}
+
+
+
+
 
 
